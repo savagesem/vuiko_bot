@@ -85,12 +85,12 @@ export default class VuikoApp{
     //Trying to find word in database based on the received text
     findWord(userId, text){
         if (text.length < 3){
-            this.sendMessage(userId, '<b>Слово повинно містити не меньше 3 символів!</b>');
+            this.sendMessage(userId, '<b>Слово повинно містити не менше 3 символів!</b>');
             return;
         }
         const words = Words.find({word: {$regex:'(?i)'+text}}).fetch();
 
-        let textToSend = 'Слов в словнику не знайдено, спробуйте інше, або /random';
+        let textToSend = 'Слово в словнику не знайдено, спробуйте інше, або /random';
         if(words.length == 0){
             this.sendMessage(userId, textToSend);
             return;
